@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="A"
+        android:orderInCategory="1"
+        android:id="@+id/fragmentA"/>
+    <item
+        android:title="B"
+        android:orderInCategory="2"
+        android:id="@+id/fragmentB"/>
+    <item
+        android:title="C"
+        android:orderInCategory="3"
+        android:id="@+id/fragmentC"/>
+    <item
+        android:title="D"
+        android:orderInCategory="4"
+        android:id="@+id/fragmentD"/>
+</menu>

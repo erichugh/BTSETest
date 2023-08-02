@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/fragmentA"
+    android:id="@+id/navigation">
+
+    <fragment
+        android:id="@+id/fragmentA"
+        android:name="com.hughwu.btsetest.view.FragmentA"
+        android:label="FragmentA"
+        tools:layout="@layout/fragment_a">
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentB"
+        android:name="com.hughwu.btsetest.view.FragmentB"
+        android:label="FragmentB"
+        tools:layout="@layout/fragment_b">
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentC"
+        android:name="com.hughwu.btsetest.view.FragmentC"
+        android:label="FragmentC"
+        tools:layout="@layout/fragment_c">
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentD"
+        android:name="com.hughwu.btsetest.view.FragmentD"
+        android:label="FragmentD"
+        tools:layout="@layout/fragment_d">
+
+        <action
+            android:id="@+id/action_fragmentD_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.hughwu.btsetest.view.SettingFragment"
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_setting">
+    </fragment>
+</navigation>

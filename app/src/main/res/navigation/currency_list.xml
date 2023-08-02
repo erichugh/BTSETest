@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/currency_list"
+    app:startDestination="@id/spotFragment">
+    <fragment android:id="@+id/spotFragment"
+        android:name="com.hughwu.btsetest.view.SpotFragment"
+        android:label="SpotFragment"
+        tools:layout="@layout/fragment_spot">
+    </fragment>
+    <fragment android:id="@+id/futuresFragment"
+        android:name="com.hughwu.btsetest.view.FuturesFragment"
+        android:label="FuturesFragment"
+        tools:layout="@layout/fragment_futures">
+    </fragment>
+</navigation>
