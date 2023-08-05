@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.hughwu.btsetest.R
 import com.hughwu.btsetest.databinding.FragmentABinding
+import com.hughwu.btsetest.viewmodel.MarketViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,7 +28,9 @@ class FragmentA : BaseViewBindingFragment<FragmentABinding>(R.layout.fragment_a)
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    var currentTabIndex = 0
+    private var currentTabIndex = 0
+
+    private val viewModel: MarketViewModel by activityViewModels()
     override fun initBinding(view: View): FragmentABinding = FragmentABinding.bind(view)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +45,8 @@ class FragmentA : BaseViewBindingFragment<FragmentABinding>(R.layout.fragment_a)
         super.onViewCreated(view, savedInstanceState)
         val currentNavHost = childFragmentManager.findFragmentById(R.id.nav_hostA)
         val mNavController = currentNavHost?.findNavController()
+//        viewModel = ViewModelProvider(this)[MarketViewModel::class.java]
+        viewModel.getMarketListAPI()
         binding.btnSpot.setOnClickListener {
             if(currentTabIndex != 0) {
                 mNavController?.navigate(R.id.spotFragment)
@@ -54,6 +61,19 @@ class FragmentA : BaseViewBindingFragment<FragmentABinding>(R.layout.fragment_a)
                 setTabBG()
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.attachWebSocket()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        viewModel.detachWebSocket()
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
     }
 
     private fun setTabBG(){
