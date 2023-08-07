@@ -1,6 +1,5 @@
 package com.hughwu.btsetest.adapter
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -12,6 +11,7 @@ import com.hughwu.btsetest.model.DisplayData
 class MarketListAdapter:RecyclerView.Adapter<MarketListAdapter.MarketListViewHolder>() {
     inner class MarketListViewHolder(private val itemBinding: MarketListAdapterBinding): RecyclerView.ViewHolder(itemBinding.root){
         fun bind(displayData: DisplayData){
+//            itemBinding.itemData = displayData
             itemBinding.tvSymbol.text = displayData.symbol
             itemBinding.tvPrice.text = displayData.price?.toBigDecimal()?.toString()
         }
@@ -23,19 +23,19 @@ class MarketListAdapter:RecyclerView.Adapter<MarketListAdapter.MarketListViewHol
         }
 
         override fun areContentsTheSame(oldItem: DisplayData, newItem: DisplayData): Boolean {
-            return oldItem.price == newItem.price && oldItem == newItem && oldItem.price!!.compareTo(newItem.price!!) == 0
+            return oldItem.price == newItem.price && oldItem == newItem
         }
     }
 
     private val recyclerListDiffer = AsyncListDiffer(this, diffUtil)
 
-    var displays: List<DisplayData>
+    private var displays: List<DisplayData>
         get() = recyclerListDiffer.currentList
         set(value) = recyclerListDiffer.submitList(value)
 
     fun updateList(list: MutableList<DisplayData>) {
-        val newList = ArrayList<DisplayData>(list)
-        displays= newList
+        val newList = list.toMutableList()
+        displays = newList
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MarketListViewHolder {
         val itemBinding = MarketListAdapterBinding.inflate(LayoutInflater.from(parent.context), parent, false)

@@ -115,6 +115,9 @@ class MarketViewModel @Inject constructor(private val repository: MarketReposito
 
         private fun output(text: String?) {
             Log.d("Socket", text!!)
+//            if(text.length > 1000){
+//                output(text.substring(1000))
+//            }
         }
     }
 }
