@@ -11,9 +11,7 @@ import com.hughwu.btsetest.model.DisplayData
 class MarketListAdapter:RecyclerView.Adapter<MarketListAdapter.MarketListViewHolder>() {
     inner class MarketListViewHolder(private val itemBinding: MarketListAdapterBinding): RecyclerView.ViewHolder(itemBinding.root){
         fun bind(displayData: DisplayData){
-//            itemBinding.itemData = displayData
-            itemBinding.tvSymbol.text = displayData.symbol
-            itemBinding.tvPrice.text = displayData.price?.toBigDecimal()?.toString()
+            itemBinding.itemData = displayData
         }
     }
 
@@ -34,7 +32,7 @@ class MarketListAdapter:RecyclerView.Adapter<MarketListAdapter.MarketListViewHol
         set(value) = recyclerListDiffer.submitList(value)
 
     fun updateList(list: MutableList<DisplayData>) {
-        val newList = list.toMutableList()
+        val newList = list.map { it.copy() }
         displays = newList
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MarketListViewHolder {

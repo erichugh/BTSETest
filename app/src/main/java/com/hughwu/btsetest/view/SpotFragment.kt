@@ -33,7 +33,6 @@ class SpotFragment: BaseViewBindingFragment<FragmentSpotBinding>(R.layout.fragme
     private fun observeVM(){
         viewModel.liveDataMerger.observe(viewLifecycleOwner, Observer {
             marketListAdapter.updateList(it.filter { displayData ->  displayData.future == false }.toMutableList())
-            marketListAdapter.notifyDataSetChanged()
         })
     }
 }

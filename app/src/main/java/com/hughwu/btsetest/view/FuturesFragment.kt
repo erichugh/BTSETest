@@ -27,7 +27,6 @@ class FuturesFragment: BaseViewBindingFragment<FragmentFuturesBinding>(R.layout.
     private fun observeVM(){
         viewModel.liveDataMerger.observe(viewLifecycleOwner, Observer {
             marketListAdapter.updateList(it.filter { displayData ->  displayData.future == true }.toMutableList())
-            marketListAdapter.notifyDataSetChanged()
         })
     }
 
