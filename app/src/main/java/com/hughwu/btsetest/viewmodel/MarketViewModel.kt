@@ -37,6 +37,7 @@ class MarketViewModel @Inject constructor(private val repository: MarketReposito
     init {
         val displayDataList = mutableListOf<DisplayData>()
         liveDataMerger.addSource(apiReturn, Observer {
+            displayDataList.clear()
             if (it != null) {
                 for(data in it){
                     if (data != null) {
