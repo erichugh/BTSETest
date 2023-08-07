@@ -45,7 +45,12 @@ class FragmentA : BaseViewBindingFragment<FragmentABinding>(R.layout.fragment_a)
         super.onViewCreated(view, savedInstanceState)
         val currentNavHost = childFragmentManager.findFragmentById(R.id.nav_hostA)
         val mNavController = currentNavHost?.findNavController()
-//        viewModel = ViewModelProvider(this)[MarketViewModel::class.java]
+
+        //initCurrentTab
+        mNavController?.navigate(R.id.spotFragment)
+        currentTabIndex = 0
+        setTabBG()
+
         viewModel.getMarketListAPI()
         binding.btnSpot.setOnClickListener {
             if(currentTabIndex != 0) {

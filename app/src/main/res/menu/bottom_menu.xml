@@ -2,19 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:title="A"
+        android:title="@string/tab_a"
         android:orderInCategory="1"
         android:id="@+id/fragmentA"/>
     <item
-        android:title="B"
+        android:title="@string/tab_b"
         android:orderInCategory="2"
         android:id="@+id/fragmentB"/>
     <item
-        android:title="C"
+        android:title="@string/tab_c"
         android:orderInCategory="3"
         android:id="@+id/fragmentC"/>
     <item
-        android:title="D"
+        android:title="@string/tab_d"
         android:orderInCategory="4"
         android:id="@+id/fragmentD"/>
 </menu>
